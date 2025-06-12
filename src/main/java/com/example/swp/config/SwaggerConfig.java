@@ -30,10 +30,11 @@ public class SwaggerConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*") // Sử dụng allowedOriginPatterns thay cho allowedOrigins
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOrigins("*")
                         .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Methods", "Access-Control-Allow-Headers")
+                        .allowedMethods("*")
+                        .maxAge(1440000);
             }
         };
     }
