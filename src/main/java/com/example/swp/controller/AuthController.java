@@ -26,8 +26,6 @@ import org.springframework.http.ResponseEntity;
 
 @RequestMapping("/api/auth")
 @RestController
-@SecurityRequirement(name = "bearerAuth")
-@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;

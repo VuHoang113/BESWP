@@ -10,9 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = " API", version = "2.0", description = "Information"))
-@SecurityScheme(name = "api", scheme = "bearer", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
-@EnableScheduling
 public class SwpApplication {
     public static void main(String[] args) {
         SpringApplication.run(SwpApplication.class, args);
