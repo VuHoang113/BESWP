@@ -13,6 +13,7 @@ public class UserDTO {
     private String username;
     private String email;
     private Double amount;
+    private String role;
 
     public UserDTO(User user) {
         this.username = user.getUsername();

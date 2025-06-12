@@ -8,6 +8,7 @@ public class UserMapper {
         UserDTO dto = new UserDTO();
         dto.setId(user.getUserID());
         dto.setAmount(user.getAmount());
+        dto.setRole(user.getRole());
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
         return dto;
