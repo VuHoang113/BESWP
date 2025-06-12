@@ -7,12 +7,14 @@ import com.example.swp.dto.UserDTO;
 import com.example.swp.repository.UserRepository;
 import com.example.swp.security.JwtUtil;
 import com.example.swp.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.swp.dto.request.ForgotPasswordRequest;
@@ -21,9 +23,11 @@ import com.example.swp.dto.request.VerifyOtpRequest;
 import com.example.swp.dto.request.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 
-@RestController
+
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@SecurityRequirement(name = "bearerAuth")
+@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
