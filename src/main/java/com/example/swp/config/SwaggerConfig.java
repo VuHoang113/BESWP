@@ -30,7 +30,7 @@ public class SwaggerConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOriginPatterns("*") // Sử dụng allowedOriginPatterns thay cho allowedOrigins
+                        .allowedOrigins("*") // Sử dụng allowedOriginPatterns thay cho allowedOrigins
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
