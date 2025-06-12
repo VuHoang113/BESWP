@@ -59,4 +59,6 @@ public class User {
     private String otpCode; // Mã OTP
 
     private LocalDateTime otpExpiry; // Thời gian hết hạn OTP
+
+    private Double amount = 0.0;
 }

@@ -11,4 +11,6 @@ public interface MembershipPackageService {
     MembershipPackageResponse getById(Integer id);
     List<MembershipPackageResponse> getAll();
     void softDelete(Integer id);
+
+
 }

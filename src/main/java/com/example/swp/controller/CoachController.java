@@ -22,7 +22,9 @@ public class CoachController {
     public List<Consultation> getAllConsultations() { return coachService.getAllConsultations(); }
 
     @GetMapping("/users")
-    public List<UserDTO> getAllUsers(@PathVariable Integer id) { return coachService.getAllUsers(id); }
+    public List<UserDTO> getAllUsers(@PathVariable Integer id) {
+        return coachService.getAllUsers(id);
+    }
 
     @GetMapping("/daily-progress")
     public List<DailyProgress> getAllDailyProgress() { return coachService.getAllDailyProgress(); }

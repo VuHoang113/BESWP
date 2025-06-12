@@ -19,4 +19,6 @@ public interface UserService {
     void resetPasswordWithOtp(String email, String otp, String newPassword);
     void verifyOtp(String email, String otp);
     void registerWithOtp(RegisterRequest request);
+
+    UserDTO topupBalance(Integer userId, Double amount);
 }
