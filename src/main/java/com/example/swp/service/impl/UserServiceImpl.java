@@ -3,6 +3,7 @@ package com.example.swp.service.impl;
 import com.example.swp.dto.request.AuthRegisterRequest;
 import com.example.swp.dto.UserDTO;
 import com.example.swp.dto.UserMapper;
+import com.example.swp.entity.Payment;
 import com.example.swp.entity.User;
 import com.example.swp.repository.UserRepository;
 import com.example.swp.service.UserService;
@@ -176,5 +177,12 @@ public class UserServiceImpl implements UserService {
         user.setOtpExpiry(LocalDateTime.now().plusMinutes(10));
         userRepository.save(user);
         sendOtpEmail(request.getEmail(), otp, "Account Registration OTP");
+    }
+    @Override
+    public UserDTO topupBalance(Integer userId, Double amount) {
+        User user = getUserById(userId);
+        user.setAmount(user.getAmount() + amount);
+        userRepository.save(user);
+        return UserMapper.toDTO(user);
     }
 }

@@ -8,6 +8,5 @@ public class UserRequest {
     private String email;
     private String password;
     private String role;
-    // Thêm các trường khác nếu cần
 }
 

@@ -8,17 +8,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-
 public class UserDTO {
 
     private String username;
     private String email;
-
-
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    private Double amount;
 
     public UserDTO(User user) {
         this.username = user.getUsername();

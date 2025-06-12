@@ -34,9 +34,6 @@ public class Payment {
 
     private String paymentMethod;
 
-    @Column(unique = true)
-    private String transactionID;
-
     @Column(nullable = false)
-    private String status = "pending";
+    private String status = "Success";
 }

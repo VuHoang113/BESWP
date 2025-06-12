@@ -2,13 +2,12 @@ package com.example.swp.controller;
 
 import com.example.swp.dto.UserDTO;
 import com.example.swp.dto.UserMapper;
-import com.example.swp.dto.response.MembershipPackageResponse;
-import com.example.swp.service.MembershipPackageService;
+import com.example.swp.dto.request.PaymentDTO;
+import com.example.swp.service.PaymentService;
 import com.example.swp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -17,7 +16,8 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private MembershipPackageService membershipPackageService;
+    private PaymentService paymentService;
+
 
     @GetMapping("/profile")
     public UserDTO getProfile(Authentication authentication) {
@@ -28,15 +28,21 @@ public class UserController {
     public UserDTO updateUser(@PathVariable Integer id, @RequestBody UserDTO userDTO) {
         return UserMapper.toDTO(userService.updateUser(id, UserMapper.toEntity(userDTO)));
     }
-
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/membership")
-    public List<MembershipPackageResponse> getMembershipUsers() {
-        return membershipPackageService.getAll();
+
+    //nap tien vao vi
+    @PostMapping("/topUpWallet/{id}")
+    public UserDTO topUpWallet(@PathVariable Integer id, @RequestParam double amount) {
+        return userService.topupBalance(id, amount);
     }
 
+    // Đặt gói thành viên
+    @PostMapping("/booking")
+    public PaymentDTO bookMembershipPackage(@RequestParam Integer userId, @RequestParam Integer packageId) {
+      return  paymentService.createPayment(userId, packageId);
+    }
 }
