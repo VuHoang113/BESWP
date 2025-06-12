@@ -30,12 +30,11 @@ public class SwaggerConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://beswp-production.up.railway.app")
+                        .allowedOriginPatterns("https://beswp-production.up.railway.app") // Sử dụng allowedOriginPatterns thay cho allowedOrigins
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true)
                         .maxAge(3600);
-
 
             }
         };
