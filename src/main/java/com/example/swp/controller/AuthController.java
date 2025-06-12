@@ -23,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
