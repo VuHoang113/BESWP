@@ -1,12 +1,9 @@
 package com.example.swp.entity;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -16,10 +13,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BlogPost {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postID;
 
+    // Tham chiếu đến User, nếu bạn có entity User thì dùng @ManyToOne
     @ManyToOne
     @JoinColumn(name = "authorUserID", nullable = false)
     private User author;
@@ -27,17 +26,15 @@ public class BlogPost {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, unique = true)
-    private String slug;
-
-    @Column(columnDefinition = "LONGTEXT", nullable = false)
+    @Column(nullable = false, columnDefinition = "NVARCHAR(MAX)")
     private String content;
 
-    private String excerpt;
+    @Column(nullable = false)
     private LocalDateTime publishDate = LocalDateTime.now();
+
     private LocalDateTime lastModifiedDate;
+
     private String category;
-    private String tags;
 
     @Column(nullable = false)
     private Integer views = 0;
