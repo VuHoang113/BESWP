@@ -33,6 +33,6 @@ public class Feedback {
     private String comment;
 
     @Column(nullable = false)
-    private LocalDateTime submissionDate = LocalDateTime.now();
+    private LocalDateTime submissionDate;
 }
 

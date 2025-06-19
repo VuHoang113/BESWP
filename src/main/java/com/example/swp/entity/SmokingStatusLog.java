@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SmokingStatusLog {
+    //ghi nhan thoai quen
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer logID;

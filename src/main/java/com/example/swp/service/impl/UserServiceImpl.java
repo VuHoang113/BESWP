@@ -1,15 +1,14 @@
 package com.example.swp.service.impl;
 
-import com.example.swp.dto.request.AuthRegisterRequest;
 import com.example.swp.dto.UserDTO;
-import com.example.swp.dto.UserMapper;
-import com.example.swp.entity.Payment;
+import com.example.swp.mapper.UserMapper;
 import com.example.swp.entity.User;
 import com.example.swp.repository.UserRepository;
 import com.example.swp.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -178,6 +177,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         sendOtpEmail(request.getEmail(), otp, "Account Registration OTP");
     }
+
+    @Override
+    public void updateLastLoginTime(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        user.setLastLoginDate(LocalDateTime.now());
+        userRepository.save(user);
+    }
+
     @Override
     public UserDTO topupBalance(Integer userId, Double amount) {
         User user = getUserById(userId);

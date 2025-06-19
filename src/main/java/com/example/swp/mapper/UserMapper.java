@@ -1,16 +1,19 @@
-package com.example.swp.dto;
+package com.example.swp.mapper;
 
+import com.example.swp.dto.UserDTO;
 import com.example.swp.entity.User;
 
 public class UserMapper {
     public static UserDTO toDTO(User user) {
         if (user == null) return null;
         UserDTO dto = new UserDTO();
-        dto.setId(user.getUserID());
-        dto.setAmount(user.getAmount());
-        dto.setRole(user.getRole());
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
+        dto.setAmount(user.getAmount());
+        dto.setUrl(user.getProfilePictureURL());
+        dto.setId(user.getUserID());
+        dto.setRole(user.getRole());
+        dto.setLastLogin(user.getLastLoginDate());
         return dto;
     }
 

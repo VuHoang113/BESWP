@@ -22,12 +22,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired private MembershipPackageRepository membershipPackageRepository;
     @Autowired private PaymentRepository paymentRepository;
     @Autowired private BlogPostRepository blogPostRepository;
-    @Autowired private PostCommentRepository postCommentRepository;
-    @Autowired private FeedbackRepository feedbackRepository;
     @Autowired private BadgeRepository badgeRepository;
-    @Autowired private DailyProgressRepository dailyProgressRepository;
-    @Autowired private CessationPlanRepository cessationPlanRepository;
-    @Autowired private SmokingStatusLogRepository smokingStatusLogRepository;
 
     @Override
     public List<UserResponse> getAllUsers() {
@@ -195,7 +190,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void deleteBadge(Integer id) {
         Badge badge = badgeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Badge not found"));
-        badge.setIsActive(false); // Soft delete: mark as inactive
+        badge.setIsActive(false);
         badgeRepository.save(badge);
     }
 

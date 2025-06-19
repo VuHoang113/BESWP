@@ -32,7 +32,7 @@ public class User {
     private String fullName;
 
     @Column(nullable = false)
-    private LocalDateTime registrationDate = LocalDateTime.now();
+    private LocalDate registrationDate = LocalDate.now();
 
     private LocalDateTime lastLoginDate;
     private String profilePictureURL;
@@ -41,14 +41,14 @@ public class User {
     @JoinColumn(name = "currentMembershipPackageID")
     private MembershipPackage currentMembershipPackage;
 
-    private LocalDate subscriptionEndDate;
+    private LocalDateTime subscriptionEndDate;
 
     @ManyToOne
     @JoinColumn(name = "coachID")
     private Coach coach;
 
     @Column(nullable = false)
-    private String role = "guest";
+    private String role = "GUEST";
 
     @Column(nullable = false)
     private Boolean deleted = false;

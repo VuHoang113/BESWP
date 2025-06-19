@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CessationPlan {
+//lap ke hoach cai thuoc la --> sinh ra lich trinh chi tiet(plan stage)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer planID;
@@ -30,7 +31,9 @@ public class CessationPlan {
     private LocalDate targetQuitDate;
 
     private Integer cigarettesPerDay;
+
     private String smokingFrequency;
+
     private Double costPerPack;
 
     @Column(columnDefinition = "LONGTEXT")

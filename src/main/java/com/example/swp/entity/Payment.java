@@ -30,6 +30,9 @@ public class Payment {
     private LocalDateTime paymentDate = LocalDateTime.now();
 
     @Column(nullable = false)
+    private LocalDateTime expirationDate;
+
+    @Column(nullable = false)
     private Double amount;
 
     private String paymentMethod;

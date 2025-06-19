@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/coach")
+@PreAuthorize("hasRole('COACH')")
 public class CoachController {
     @Autowired private CoachService coachService;
 
