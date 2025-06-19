@@ -4,5 +4,7 @@ import com.example.swp.entity.Coach;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CoachRepository extends JpaRepository<Coach, Integer> {
+    Coach findByUser_UserID(Integer userId);
+
 }
 

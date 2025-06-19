@@ -20,5 +20,6 @@ public interface UserService {
     void verifyOtp(String email, String otp);
     void registerWithOtp(RegisterRequest request);
 
+    void updateLastLoginTime(String username);
     UserDTO topupBalance(Integer userId, Double amount);
 }

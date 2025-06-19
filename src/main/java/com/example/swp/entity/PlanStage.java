@@ -23,7 +23,7 @@ public class PlanStage {
     private String stageName;
 
     @Column(columnDefinition = "LONGTEXT")
-    private String description;
+    private String descritipon;
 
     private Integer targetDurationDays;
 

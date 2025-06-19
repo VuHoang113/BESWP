@@ -1,4 +1,4 @@
-package com.example.swp.dto;
+package com.example.swp.mapper;
 
 import com.example.swp.dto.request.MembershipPackageRequest;
 import com.example.swp.dto.response.MembershipPackageResponse;

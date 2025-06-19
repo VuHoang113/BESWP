@@ -2,17 +2,16 @@ package com.example.swp.controller;
 
 import com.example.swp.dto.request.AuthRequest;
 import com.example.swp.dto.response.AuthResponse;
-import com.example.swp.dto.request.AuthRegisterRequest;
 import com.example.swp.dto.UserDTO;
-import com.example.swp.repository.UserRepository;
 import com.example.swp.security.JwtUtil;
 import com.example.swp.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.swp.dto.request.ForgotPasswordRequest;
@@ -21,8 +20,11 @@ import com.example.swp.dto.request.VerifyOtpRequest;
 import com.example.swp.dto.request.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 
-@RestController
+
 @RequestMapping("/api/auth")
+@RestController
+@SecurityRequirement(name = "bearerAuth")
+@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -38,6 +40,7 @@ public class AuthController {
         );
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = jwtUtil.generateToken(userDetails);
+        userService.updateLastLoginTime(userDetails.getUsername());
         return new AuthResponse(token);
     }
     @PostMapping("/forgot-password")

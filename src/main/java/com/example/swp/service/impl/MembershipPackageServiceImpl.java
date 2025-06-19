@@ -2,7 +2,7 @@ package com.example.swp.service.impl;
 
 import com.example.swp.dto.request.MembershipPackageRequest;
 import com.example.swp.dto.response.MembershipPackageResponse;
-import com.example.swp.dto.MembershipPackageMapper;
+import com.example.swp.mapper.MembershipPackageMapper;
 import com.example.swp.entity.MembershipPackage;
 import com.example.swp.repository.MembershipPackageRepository;
 import com.example.swp.service.MembershipPackageService;

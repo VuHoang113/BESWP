@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,7 +26,7 @@ public class Consultation {
     @JoinColumn(name = "coachID", nullable = false)
     private Coach coach;
 
-    private LocalDateTime scheduledTime;
+    private LocalDate scheduledTime;
 
     @Column(nullable = false)
     private String status;
