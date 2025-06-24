@@ -46,7 +46,7 @@ public class PaymentServiceImpl implements PaymentService {
         if(user.getAmount()< membershipPackage.getPrice()) {
             throw new RuntimeException("Insufficient balance");
         }
-        if(user.getSubscriptionEndDate().isAfter(LocalDateTime.now())) {
+        if(user.getSubscriptionEndDate() != null && user.getSubscriptionEndDate().isAfter(LocalDateTime.now())) {
             throw new RuntimeException("User already has an active membership");
         }
 

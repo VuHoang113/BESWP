@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class SmokingStatusLogRequest {
     private Integer userId;
-    private LocalDate logDate;
+    private LocalDate logDate = LocalDate.now();
     private Integer cigarettesPerDay;
     private String smokingFrequency;
     private Double costPerPack;

@@ -10,7 +10,9 @@ import com.example.swp.service.SmokingStatusLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class SmokingStatusLogServiceImpl implements SmokingStatusLogService {
@@ -34,9 +36,12 @@ public class SmokingStatusLogServiceImpl implements SmokingStatusLogService {
     public SmokingStatusLogResponse create(SmokingStatusLogRequest request) {
         User user = userRepository.findById(request.getUserId())
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        if(Objects.equals(request.getLogDate(), LocalDate.now()) || !request.getLogDate().isEqual(LocalDate.now())) {
+            throw  new RuntimeException("Logdate today is empty");
+        }
         SmokingStatusLog log = new SmokingStatusLog();
         log.setUser(user);
-        log.setLogDate(request.getLogDate() != null ? request.getLogDate() : java.time.LocalDate.now());
+        log.setLogDate(java.time.LocalDate.now());
         log.setCigarettesPerDay(request.getCigarettesPerDay());
         log.setSmokingFrequency(request.getSmokingFrequency());
         log.setCostPerPack(request.getCostPerPack());
