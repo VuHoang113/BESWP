@@ -2,7 +2,9 @@ package com.example.swp.service.impl;
 
 import com.example.swp.entity.*;
 import com.example.swp.repository.*;
+import com.example.swp.security.UserDetailsServiceImpl;
 import com.example.swp.service.AdminService;
+import com.example.swp.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -23,6 +25,9 @@ public class AdminServiceImpl implements AdminService {
     @Autowired private PaymentRepository paymentRepository;
     @Autowired private BlogPostRepository blogPostRepository;
     @Autowired private BadgeRepository badgeRepository;
+
+    @Autowired
+    private UserUtil userUtil;
 
     @Override
     public List<UserResponse> getAllUsers() {
@@ -129,10 +134,13 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public BlogPostResponse createBlogPost(BlogPostRequest request) {
+        User user = userUtil.getCurrentUser();
         BlogPost post = new BlogPost();
+        post.setAuthor(user);
         post.setTitle(request.getTitle());
         post.setContent(request.getContent());
         post.setFeaturedImageURL(request.getImageUrl());
+        post.setSlug("test");
         // Set other fields as needed
         return toBlogPostResponse(blogPostRepository.save(post));
     }

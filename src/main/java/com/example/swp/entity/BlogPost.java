@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +20,7 @@ public class BlogPost {
     private Integer postID;
 
     @ManyToOne
-    @JoinColumn(name = "authorUserID", nullable = false)
+    @JoinColumn(name = "authorUserID")
     private User author;
 
     @Column(nullable = false)
